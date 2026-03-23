@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const useEmployeeStore = create(
+export const useEmployeeStore = create(
   persist(
     (set) => ({
       employees: [],
