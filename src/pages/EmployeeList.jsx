@@ -49,22 +49,27 @@ function EmployeeList() {
   console.log(employees);
 
   return (
-    <>
+    <div className="max-w-5xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-6">
+        Employee List
+      </h1>
       <input
         value={globalFilter}
         onChange={(e) => setGlobalFilter(e.target.value)}
-        placeholder="Search..."
+        placeholder="Rechercher..."
+        className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
       />
 
-      <table>
+      <table className="w-full border-collapse">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <tr key={headerGroup.id} className="hover:bg-gray-50">
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
                   onClick={header.column.getToggleSortingHandler()}
                   style={{ cursor: "pointer" }}
+                  className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b"
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -82,9 +87,12 @@ function EmployeeList() {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr key={row.id} className="hover:bg-gray-50">
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
+                <td
+                  key={cell.id}
+                  className="px-4 py-3 text-sm text-gray-800 border-b"
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
@@ -92,10 +100,11 @@ function EmployeeList() {
           ))}
         </tbody>
       </table>
-      <div>
+      <div className="flex items-center justify-center gap-4 mt-4">
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
+          className="px-4 py-2 text-sm bg-slate-600 text-white rounded-md hover:bg-slate-700 disabled:opacity-50"
         >
           Previous
         </button>
@@ -106,11 +115,12 @@ function EmployeeList() {
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          className="px-4 py-2 text-sm bg-slate-600 text-white rounded-md hover:bg-slate-700 disabled:opacity-50"
         >
           Next
         </button>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -40,7 +40,7 @@ function CreateEmployee() {
   };
 
   return (
-    <>
+    <div className="max-w-5xl mx-auto px-4 py-8">
       <h1>Create Employee</h1>
       <label>
         First Name:{" "}
@@ -125,7 +125,7 @@ function CreateEmployee() {
       >
         Employee Created!
       </Modal>
-    </>
+    </div>
   );
 }
 

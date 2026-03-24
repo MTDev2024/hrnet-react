@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="bg-teal-300 px-8 py-5 shadow-sm">
+    <header className="bg-slate-600 px-8 py-5 shadow-sm">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <span className="text-xl font-bold text-white tracking-wide">
           HRnet
@@ -13,7 +13,7 @@ function Header() {
             className={({ isActive }) =>
               isActive
                 ? "text-white font-medium text-base border-b-2 border-white pb-1"
-                : "text-teal-100 text-base hover:text-white transition-colors pb-1"
+                : "text-slate-300 text-base hover:text-white transition-colors pb-1"
             }
           >
             Create Employee
@@ -23,7 +23,7 @@ function Header() {
             className={({ isActive }) =>
               isActive
                 ? "text-white font-medium text-base border-b-2 border-white pb-1"
-                : "text-teal-100 text-base hover:text-white transition-colors pb-1"
+                : "text-slate-300 text-base hover:text-white transition-colors pb-1"
             }
           >
             Employee List
