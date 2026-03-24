@@ -3,6 +3,7 @@ import {
   useReactTable,
   createColumnHelper,
   flexRender,
+  getSortedRowModel,
 } from "@tanstack/react-table";
 import { useEmployeeStore } from "../store/employeeStore";
 
@@ -26,6 +27,7 @@ function EmployeeList() {
     data: employees,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   console.log(employees);
@@ -36,11 +38,20 @@ function EmployeeList() {
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th key={header.id}>
+              <th
+                key={header.id}
+                onClick={header.column.getToggleSortingHandler()}
+                style={{ cursor: "pointer" }}
+              >
                 {flexRender(
                   header.column.columnDef.header,
                   header.getContext(),
                 )}
+                {header.column.getIsSorted() === "asc"
+                  ? " ↑"
+                  : header.column.getIsSorted() === "desc"
+                    ? " ↓"
+                    : " ↕"}
               </th>
             ))}
           </tr>
