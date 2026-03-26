@@ -44,6 +44,7 @@ function CreateEmployee() {
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Create Employee
       </h1>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           First Name
@@ -55,73 +56,89 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-      <label>
-        Last Name:{" "}
+
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">
+          Last Name
+        </label>
         <input
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
-      </label>
-      <label>
-        Date of Birth:{" "}
+      </div>
+
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">
+          Date of Birth
+        </label>
         <DatePicker
           selected={formData.dateOfBirth}
           onChange={(date) => setFormData({ ...formData, dateOfBirth: date })}
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
-      </label>
-      <label>
-        Start date:{" "}
+      </div>
+
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">
+          Start date
+        </label>
         <DatePicker
           selected={formData.startDate}
           onChange={(date) => setFormData({ ...formData, startDate: date })}
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
-      </label>
-      <label>
-        Street:{" "}
+      </div>
+
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">Street</label>
         <input
           name="street"
           value={formData.street}
           onChange={handleChange}
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
-      </label>
-      <label>
-        City:{" "}
+      </div>
+
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">City</label>
         <input
           name="city"
           value={formData.city}
           onChange={handleChange}
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
-      </label>
+      </div>
 
-      <label>
-        State :{" "}
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">State</label>
         <Select
           options={states}
           value={states.find((s) => s.value === formData.state) || null}
           onChange={(selected) =>
             setFormData({ ...formData, state: selected.value })
           }
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="text-sm"
         />
-      </label>
+      </div>
 
-      <label>
-        Zip Code:{" "}
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">
+          Zip Code
+        </label>
         <input
           name="zipCode"
           value={formData.zipCode}
           onChange={handleChange}
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
-      </label>
-      <label>
-        Departments :{" "}
+      </div>
+
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">
+          Departments
+        </label>
         <Select
           options={departments}
           value={
@@ -130,9 +147,10 @@ function CreateEmployee() {
           onChange={(selected) =>
             setFormData({ ...formData, department: selected.value })
           }
-          className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
+          className="text-sm"
         />
-      </label>
+      </div>
+
       <div className="flex items-center gap-4 mt-4">
         <button
           type="submit"
@@ -150,7 +168,7 @@ function CreateEmployee() {
           navigate("/employee-list");
         }}
       >
-        Employee Created!
+        Employee Created !
       </Modal>
     </div>
   );
