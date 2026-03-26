@@ -17,8 +17,20 @@ function EmployeeList() {
   const columns = [
     columnHelper.accessor("firstName", { header: "First Name" }),
     columnHelper.accessor("lastName", { header: "Last Name" }),
-    columnHelper.accessor("dateOfBirth", { header: "Date of Birth" }),
-    columnHelper.accessor("startDate", { header: "Start Date" }),
+    columnHelper.accessor("dateOfBirth", {
+      header: "Date of Birth",
+      cell: (info) => {
+        const date = new Date(info.getValue());
+        return date.toLocaleDateString("en-US");
+      },
+    }),
+    columnHelper.accessor("startDate", {
+      header: "Start Date",
+      cell: (info) => {
+        const date = new Date(info.getValue());
+        return date.toLocaleDateString("en-US");
+      },
+    }),
     columnHelper.accessor("street", { header: "Street" }),
     columnHelper.accessor("city", { header: "City" }),
     columnHelper.accessor("state", { header: "State" }),
@@ -49,7 +61,7 @@ function EmployeeList() {
   console.log(employees);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className="max-w-7xl whitespace-nowrap mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Employee List
       </h1>
