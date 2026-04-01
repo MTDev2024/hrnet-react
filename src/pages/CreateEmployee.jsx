@@ -7,9 +7,8 @@ import { departments } from "../data/departments";
 import { useEmployeeStore } from "../store/employeeStore";
 import { useNavigate } from "react-router";
 
-// TODO: replace local Modal copy with npm package once published
-import Modal from "../components/Modal.jsx";
-import "../components/Modal.css";
+import Modal from "modal-mtdev2024";
+import "modal-mtdev2024/style.css";
 
 function CreateEmployee() {
   const [formData, setFormData] = useState({
