@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 
 import Modal from "modal-mtdev2024";
 import "modal-mtdev2024/style.css";
+import "../styles/modal-override.css";
 
 function CreateEmployee() {
   const [formData, setFormData] = useState({
