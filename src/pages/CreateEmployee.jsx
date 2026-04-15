@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Select from "react-select";
+// import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { states } from "../data/states";
@@ -10,6 +10,10 @@ import { useNavigate } from "react-router";
 import Modal from "modal-mtdev2024";
 import "modal-mtdev2024/style.css";
 import "../styles/modal-override.css";
+
+/* TEST SELECT CUSTOM */
+import Select from "../../../react-hrnet-select/src/components/Select";
+import "../../../react-hrnet-select/src/components/Select.css";
 
 function CreateEmployee() {
   const [formData, setFormData] = useState({
@@ -44,7 +48,6 @@ function CreateEmployee() {
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Create Employee
       </h1>
-
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           First Name
@@ -56,7 +59,6 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Last Name
@@ -68,7 +70,6 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Date of Birth
@@ -79,7 +80,6 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Start date
@@ -90,7 +90,6 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">Street</label>
         <input
@@ -100,7 +99,6 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">City</label>
         <input
@@ -110,8 +108,7 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
-      <div className="flex flex-col mb-4">
+      {/* <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">State</label>
         <Select
           options={states}
@@ -121,8 +118,7 @@ function CreateEmployee() {
           }
           className="text-sm"
         />
-      </div>
-
+      </div> */}
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Zip Code
@@ -134,8 +130,7 @@ function CreateEmployee() {
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
       </div>
-
-      <div className="flex flex-col mb-4">
+      {/* <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Departments
         </label>
@@ -149,8 +144,32 @@ function CreateEmployee() {
           }
           className="text-sm"
         />
+      </div> */}
+      {/* TEST SELECT CUSTOM */}
+      <div className="flex flex-col mb-4">
+        <Select
+          options={states}
+          value={formData.state}
+          onChange={(val) => setFormData({ ...formData, state: val })}
+          className="text-sm"
+          placeholder="Select a state..."
+        />
       </div>
-
+      {/* FIN TEST SELECT CUSTOM */}
+      {/* TEST SELECT CUSTOM */}
+      <div className="flex flex-col mb-4">
+        <label className="text-sm font-medium text-gray-700 mb-1">
+          Departments
+        </label>
+        <Select
+          options={departments}
+          value={formData.department}
+          onChange={(val) => setFormData({ ...formData, department: val })}
+          className="text-sm"
+          placeholder="Select a department..."
+        />
+      </div>
+      {/* FIN TEST SELECT CUSTOM */}
       <div className="flex items-center gap-4 mt-4">
         <button
           type="submit"
@@ -160,7 +179,6 @@ function CreateEmployee() {
           Save
         </button>
       </div>
-
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
