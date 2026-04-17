@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Select from "react-select";
+import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { states } from "../data/states";
@@ -10,10 +10,6 @@ import { useNavigate } from "react-router";
 import Modal from "modal-mtdev2024";
 import "modal-mtdev2024/style.css";
 import "../styles/modal-override.css";
-
-/* TEST SELECT CUSTOM */
-import Select from "../../../react-hrnet-select/src/components/Select";
-import "../../../react-hrnet-select/src/components/Select.css";
 
 function CreateEmployee() {
   const [formData, setFormData] = useState({
@@ -28,17 +24,60 @@ function CreateEmployee() {
     department: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const navigate = useNavigate();
-
   const addEmployee = useEmployeeStore((state) => state.addEmployee);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    } else if (!/^[a-zA-ZÀ-ÿ\s-]+$/.test(formData.firstName)) {
+      newErrors.firstName = "First name must contain letters only";
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    } else if (!/^[a-zA-ZÀ-ÿ\s-]+$/.test(formData.lastName)) {
+      newErrors.lastName = "Last name must contain letters only";
+    }
+
+    if (!formData.dateOfBirth)
+      newErrors.dateOfBirth = "Date of birth is required";
+
+    if (!formData.startDate) newErrors.startDate = "Start date is required";
+
+    if (!formData.street.trim()) newErrors.street = "Street is required";
+
+    if (!formData.city.trim()) {
+      newErrors.city = "City is required";
+    } else if (!/^[a-zA-ZÀ-ÿ\s-]+$/.test(formData.city)) {
+      newErrors.city = "City must contain letters only";
+    }
+
+    if (!formData.state) newErrors.state = "State is required";
+
+    if (!formData.zipCode.trim()) {
+      newErrors.zipCode = "Zip code is required";
+    } else if (!/^\d{5}$/.test(formData.zipCode)) {
+      newErrors.zipCode = "Zip code must be 5 digits";
+    }
+
+    if (!formData.department) newErrors.department = "Department is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = () => {
+    if (!validate()) return;
     addEmployee(formData);
     setIsModalOpen(true);
   };
@@ -48,6 +87,7 @@ function CreateEmployee() {
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Create Employee
       </h1>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           First Name
@@ -58,7 +98,11 @@ function CreateEmployee() {
           onChange={handleChange}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.firstName && (
+          <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+        )}
       </div>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Last Name
@@ -69,7 +113,11 @@ function CreateEmployee() {
           onChange={handleChange}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.lastName && (
+          <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
+        )}
       </div>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Date of Birth
@@ -79,17 +127,25 @@ function CreateEmployee() {
           onChange={(date) => setFormData({ ...formData, dateOfBirth: date })}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.dateOfBirth && (
+          <p className="text-red-500 text-xs mt-1">{errors.dateOfBirth}</p>
+        )}
       </div>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
-          Start date
+          Start Date
         </label>
         <DatePicker
           selected={formData.startDate}
           onChange={(date) => setFormData({ ...formData, startDate: date })}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.startDate && (
+          <p className="text-red-500 text-xs mt-1">{errors.startDate}</p>
+        )}
       </div>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">Street</label>
         <input
@@ -98,7 +154,11 @@ function CreateEmployee() {
           onChange={handleChange}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.street && (
+          <p className="text-red-500 text-xs mt-1">{errors.street}</p>
+        )}
       </div>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">City</label>
         <input
@@ -107,8 +167,12 @@ function CreateEmployee() {
           onChange={handleChange}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.city && (
+          <p className="text-red-500 text-xs mt-1">{errors.city}</p>
+        )}
       </div>
-      {/* <div className="flex flex-col mb-4">
+
+      <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">State</label>
         <Select
           options={states}
@@ -118,7 +182,11 @@ function CreateEmployee() {
           }
           className="text-sm"
         />
-      </div> */}
+        {errors.state && (
+          <p className="text-red-500 text-xs mt-1">{errors.state}</p>
+        )}
+      </div>
+
       <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Zip Code
@@ -129,8 +197,12 @@ function CreateEmployee() {
           onChange={handleChange}
           className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
         />
+        {errors.zipCode && (
+          <p className="text-red-500 text-xs mt-1">{errors.zipCode}</p>
+        )}
       </div>
-      {/* <div className="flex flex-col mb-4">
+
+      <div className="flex flex-col mb-4">
         <label className="text-sm font-medium text-gray-700 mb-1">
           Departments
         </label>
@@ -144,32 +216,11 @@ function CreateEmployee() {
           }
           className="text-sm"
         />
-      </div> */}
-      {/* TEST SELECT CUSTOM */}
-      <div className="flex flex-col mb-4">
-        <Select
-          options={states}
-          value={formData.state}
-          onChange={(val) => setFormData({ ...formData, state: val })}
-          className="text-sm"
-          placeholder="Select a state..."
-        />
+        {errors.department && (
+          <p className="text-red-500 text-xs mt-1">{errors.department}</p>
+        )}
       </div>
-      {/* FIN TEST SELECT CUSTOM */}
-      {/* TEST SELECT CUSTOM */}
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          Departments
-        </label>
-        <Select
-          options={departments}
-          value={formData.department}
-          onChange={(val) => setFormData({ ...formData, department: val })}
-          className="text-sm"
-          placeholder="Select a department..."
-        />
-      </div>
-      {/* FIN TEST SELECT CUSTOM */}
+
       <div className="flex items-center gap-4 mt-4">
         <button
           type="submit"
@@ -179,6 +230,7 @@ function CreateEmployee() {
           Save
         </button>
       </div>
+
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
