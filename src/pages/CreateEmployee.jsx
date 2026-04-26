@@ -76,160 +76,204 @@ function CreateEmployee() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!validate()) return;
     addEmployee(formData);
     setIsModalOpen(true);
   };
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-8">
+    <main className="max-w-lg mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Create Employee
       </h1>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          First Name
-        </label>
-        <input
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.firstName && (
-          <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
-        )}
-      </div>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="firstName"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            First Name
+          </label>
+          <input
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.firstName && (
+            <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          Last Name
-        </label>
-        <input
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.lastName && (
-          <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="lastName"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            Last Name
+          </label>
+          <input
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.lastName && (
+            <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          Date of Birth
-        </label>
-        <DatePicker
-          selected={formData.dateOfBirth}
-          onChange={(date) => setFormData({ ...formData, dateOfBirth: date })}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.dateOfBirth && (
-          <p className="text-red-500 text-xs mt-1">{errors.dateOfBirth}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="dateOfBirth"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            Date of Birth
+          </label>
+          <DatePicker
+            id="dateOfBirth"
+            selected={formData.dateOfBirth}
+            onChange={(date) => setFormData({ ...formData, dateOfBirth: date })}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.dateOfBirth && (
+            <p className="text-red-500 text-xs mt-1">{errors.dateOfBirth}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          Start Date
-        </label>
-        <DatePicker
-          selected={formData.startDate}
-          onChange={(date) => setFormData({ ...formData, startDate: date })}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.startDate && (
-          <p className="text-red-500 text-xs mt-1">{errors.startDate}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="startDate"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            Start Date
+          </label>
+          <DatePicker
+            id="startDate"
+            selected={formData.startDate}
+            onChange={(date) => setFormData({ ...formData, startDate: date })}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.startDate && (
+            <p className="text-red-500 text-xs mt-1">{errors.startDate}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">Street</label>
-        <input
-          name="street"
-          value={formData.street}
-          onChange={handleChange}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.street && (
-          <p className="text-red-500 text-xs mt-1">{errors.street}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="street"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            Street
+          </label>
+          <input
+            id="street"
+            name="street"
+            value={formData.street}
+            onChange={handleChange}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.street && (
+            <p className="text-red-500 text-xs mt-1">{errors.street}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">City</label>
-        <input
-          name="city"
-          value={formData.city}
-          onChange={handleChange}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.city && (
-          <p className="text-red-500 text-xs mt-1">{errors.city}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="city"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            City
+          </label>
+          <input
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.city && (
+            <p className="text-red-500 text-xs mt-1">{errors.city}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">State</label>
-        <Select
-          options={states}
-          value={states.find((s) => s.value === formData.state) || null}
-          onChange={(selected) =>
-            setFormData({ ...formData, state: selected.value })
-          }
-          className="text-sm"
-        />
-        {errors.state && (
-          <p className="text-red-500 text-xs mt-1">{errors.state}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="state"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            State
+          </label>
+          <Select
+            inputId="state"
+            options={states}
+            value={states.find((s) => s.value === formData.state) || null}
+            onChange={(selected) =>
+              setFormData({ ...formData, state: selected.value })
+            }
+            className="text-sm"
+          />
+          {errors.state && (
+            <p className="text-red-500 text-xs mt-1">{errors.state}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          Zip Code
-        </label>
-        <input
-          name="zipCode"
-          value={formData.zipCode}
-          onChange={handleChange}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
-        />
-        {errors.zipCode && (
-          <p className="text-red-500 text-xs mt-1">{errors.zipCode}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="zipCode"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            Zip Code
+          </label>
+          <input
+            id="zipCode"
+            name="zipCode"
+            value={formData.zipCode}
+            onChange={handleChange}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+          />
+          {errors.zipCode && (
+            <p className="text-red-500 text-xs mt-1">{errors.zipCode}</p>
+          )}
+        </div>
 
-      <div className="flex flex-col mb-4">
-        <label className="text-sm font-medium text-gray-700 mb-1">
-          Departments
-        </label>
-        <Select
-          options={departments}
-          value={
-            departments.find((s) => s.value === formData.department) || null
-          }
-          onChange={(selected) =>
-            setFormData({ ...formData, department: selected.value })
-          }
-          className="text-sm"
-        />
-        {errors.department && (
-          <p className="text-red-500 text-xs mt-1">{errors.department}</p>
-        )}
-      </div>
+        <div className="flex flex-col mb-4">
+          <label
+            htmlFor="department"
+            className="text-sm font-medium text-gray-700 mb-1"
+          >
+            Departments
+          </label>
+          <Select
+            inputId="department"
+            options={departments}
+            value={
+              departments.find((s) => s.value === formData.department) || null
+            }
+            onChange={(selected) =>
+              setFormData({ ...formData, department: selected.value })
+            }
+            className="text-sm"
+          />
+          {errors.department && (
+            <p className="text-red-500 text-xs mt-1">{errors.department}</p>
+          )}
+        </div>
 
-      <div className="flex items-center gap-4 mt-4">
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="px-4 py-2 text-sm bg-slate-600 text-white rounded-md hover:bg-slate-700 disabled:opacity-50"
-        >
-          Save
-        </button>
-      </div>
+        <div className="flex items-center gap-4 mt-4">
+          <button
+            type="submit"
+            className="px-4 py-2 text-sm bg-slate-600 text-white rounded-md hover:bg-slate-700 disabled:opacity-50"
+          >
+            Save
+          </button>
+        </div>
+      </form>
 
       <Modal
         isOpen={isModalOpen}
@@ -240,7 +284,7 @@ function CreateEmployee() {
       >
         Employee Created !
       </Modal>
-    </div>
+    </main>
   );
 }
 

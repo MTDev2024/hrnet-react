@@ -58,17 +58,19 @@ function EmployeeList() {
     },
   });
 
-  console.log(employees);
-
   return (
-    <div className="max-w-7xl whitespace-nowrap mx-auto px-4 py-8">
+    <main className="max-w-7xl whitespace-nowrap mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         Employee List
       </h1>
+      <label htmlFor="search" className="sr-only">
+        Search
+      </label>
       <input
+        id="search"
         value={globalFilter}
         onChange={(e) => setGlobalFilter(e.target.value)}
-        placeholder="Rechercher..."
+        placeholder="Search..."
         className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-64 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 placeholder-gray-500"
       />
 
@@ -132,7 +134,7 @@ function EmployeeList() {
           Next
         </button>
       </div>
-    </div>
+    </main>
   );
 }
 
