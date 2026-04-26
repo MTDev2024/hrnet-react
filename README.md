@@ -2,18 +2,49 @@
 
 Migration of the HRnet internal HR application from jQuery to React for WealthHealth.
 
+**Live demo** → [hrnet-react-psi.vercel.app](https://hrnet-react-psi.vercel.app)
+
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="public/screenshots/hrnet-create.png" width="48%" />
+  <img src="public/screenshots/hrnet-list.png" width="48%" />
+</p>
+
+---
+
+## Lighthouse
+
+<p align="center">
+  <img src="public/screenshots/lighthouse.png" width="600" />
+</p>
+
 ---
 
 ## Stack
 
-- **React 19** + **Vite 8**
-- **React Router v7** - client-side navigation
-- **Zustand** - state management with localStorage persistence
-- **TanStack Table v8** - employee list with sorting, filtering, pagination
-- **react-datepicker** - date picker (replaces jQuery datetimepicker)
-- **react-select** - dropdown menus (replaces jQuery UI selectmenu)
-- **modal-mtdev2024** - custom React modal component (replaces jquery.modal)
-- **Tailwind CSS v4** - utility-first styling
+| Layer       | Technology                                              |
+|-------------|---------------------------------------------------------|
+| Framework   | React 19 + Vite 8                                       |
+| Routing     | React Router v7                                         |
+| State       | Zustand (localStorage persistence)                      |
+| Table       | TanStack Table v8 (sort, filter, pagination)            |
+| Date picker | react-datepicker                                        |
+| Select      | select-mtdev2024 (replaces jQuery UI selectmenu)        |
+| Modal       | modal-mtdev2024 (replaces jquery.modal)                 |
+| Styling     | Tailwind CSS v4                                         |
+
+---
+
+## Features
+
+- Create Employee form with 9 fields and validation
+- Employee List with search, sort and pagination
+- Data persisted in localStorage via Zustand
+- Fully accessible — 100/100 Lighthouse accessibility score
+- 0% jQuery, 100% React
 
 ---
 
@@ -24,8 +55,6 @@ npm install
 npm run dev
 ```
 
----
-
 ## Production Build
 
 ```bash
@@ -35,20 +64,21 @@ npx serve dist --single
 
 ---
 
-## Features
+## Related
 
-- Create Employee form with 9 fields
-- Employee List with search, sort and pagination
-- Data persisted in localStorage via Zustand
-- 0% jQuery, 100% React
+- [modal-mtdev2024](https://www.npmjs.com/package/modal-mtdev2024) — npm package
+- [react-hrnet-modal](https://github.com/MTDev2024/react-hrnet-modal) — modal component repo
+- [select-mtdev2024](https://www.npmjs.com/package/select-mtdev2024) — npm package
+- [react-hrnet-select](https://github.com/MTDev2024/react-hrnet-select) — select component repo
 
 ---
 
-## Related
-
-- [modal-mtdev2024](https://www.npmjs.com/package/modal-mtdev2024) - npm package
-- [react-hrnet-modal](https://github.com/MTDev2024/react-hrnet-modal) - modal component repo
-
 ## License
 
-MIT © MTDev2024
+MIT © 2026 Michael Takbou
+
+---
+
+## Author
+
+Michael Takbou · [LinkedIn](https://www.linkedin.com/in/michael-takbou/) · [Malt](https://www.malt.fr/profile/michaeltakbou)
