@@ -1,4 +1,4 @@
-# HRnet — React
+# HRnet - React
 
 Migration of the HRnet internal HR application from jQuery to React for WealthHealth.
 
@@ -10,6 +10,11 @@ Migration of the HRnet internal HR application from jQuery to React for WealthHe
 
 <p align="center">
   <img src="public/screenshots/hrnet-create.png" width="48%" />
+  
+</p>
+
+<p align="center">
+  
   <img src="public/screenshots/hrnet-list.png" width="48%" />
 </p>
 
@@ -18,7 +23,7 @@ Migration of the HRnet internal HR application from jQuery to React for WealthHe
 ## Lighthouse
 
 <p align="center">
-  <img src="public/screenshots/lighthouse.png" width="600" />
+  <img src="public/screenshots/lighthouse.png" width="400" />
 </p>
 
 ---
@@ -43,7 +48,7 @@ Migration of the HRnet internal HR application from jQuery to React for WealthHe
 - Create Employee form with 9 fields and validation
 - Employee List with search, sort and pagination
 - Data persisted in localStorage via Zustand
-- Fully accessible — 100/100 Lighthouse accessibility score
+- Fully accessible - 100/100 Lighthouse accessibility score
 - 0% jQuery, 100% React
 
 ---
@@ -66,10 +71,10 @@ npx serve dist --single
 
 ## Related
 
-- [modal-mtdev2024](https://www.npmjs.com/package/modal-mtdev2024) — npm package
-- [react-hrnet-modal](https://github.com/MTDev2024/react-hrnet-modal) — modal component repo
-- [select-mtdev2024](https://www.npmjs.com/package/select-mtdev2024) — npm package
-- [react-hrnet-select](https://github.com/MTDev2024/react-hrnet-select) — select component repo
+- [modal-mtdev2024](https://www.npmjs.com/package/modal-mtdev2024) - npm package
+- [react-hrnet-modal](https://github.com/MTDev2024/react-hrnet-modal) - modal component repo
+- [select-mtdev2024](https://www.npmjs.com/package/select-mtdev2024) - npm package
+- [react-hrnet-select](https://github.com/MTDev2024/react-hrnet-select) - select component repo
 
 ---
 
